@@ -1,62 +1,88 @@
-[Project]
-filename=oyun1.dev
-name=oyun1
-Type=1
-Ver=2
-ObjFiles=
-Includes=
-Libs=
-PrivateResource=
-ResourceIncludes=
-MakeIncludes=
-Compiler=
-CppCompiler=
-Linker=
-IsCpp=0
-Icon=
-ExeOutput=
-ObjectOutput=
-LogOutput=
-LogOutputEnabled=0
-OverrideOutput=0
-OverrideOutputName=
-HostApplication=
-UseCustomMakefile=0
-CustomMakefile=
-CommandLine=
-Folders=
-IncludeVersionInfo=0
-SupportXPThemes=0
-CompilerSet=0
-CompilerSettings=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;8;0;0;0
-UnitCount=1
+#include <stdio.h>
+#include <stdlib.h>
+#include<time.h>
 
-[VersionInfo]
-Major=1
-Minor=0
-Release=0
-Build=0
-LanguageID=1033
-CharsetID=1252
-CompanyName=
-FileVersion=
-FileDescription=Developed using the Dev-C++ IDE
-InternalName=
-LegalCopyright=
-LegalTrademarks=
-OriginalFilename=
-ProductName=
-ProductVersion=
-AutoIncBuildNr=0
-SyncProduct=1
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
-[Unit1]
-FileName=main.c
-CompileCpp=0
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
+int main(int argc, char *argv[]) {
+	
+  int T= 1; 
+		int K=2; 
+		int M=3; 
+		int i;
+		int Oyuncu = 0; 
+		int Bilgisayar= 0; 
+		int secim; 
+		int hataligiris;				
+		degeralma:				
+		srand(time(NULL)); 
+		printf("Tas:1, Kagit:2 ve Makas:3\n"); 
+ 
+	 for(i=0; i<5; i++){
+		 printf("Seciminizi giriniz")	; 
+			scanf("%d" , &secim);
+			int bilgisayar = rand()%3 + 1; 	
+			if (secim==1)	{
+				 if(bilgisayar==1)	{
+					printf("Berabere bitti...\n"); 																					
+				}	
+				if (bilgisayar == 2){
+					printf("Bilgisayar kazandi\n"); 
+					bilgisayar = bilgisayar + 1; 																
+				}			
+				if(bilgisayar== 3){
+					printf("Kazandiniz tebrikler...\n");
+					Oyuncu = Oyuncu + 1 ; 																									
+				}						
+			}																		 
+		  else if (secim == 2){
+						if(bilgisayar == 1)			  {
+							printf("Kazandiniz tebrikler...\n");
+							Oyuncu = Oyuncu + 1; 																																														
+						}	
+						if(bilgisayar==2)		{
+						printf("Berabere bitti...\n"); 
+						}			
+						if(bilgisayar== 3){
+							printf("Bilgisayar kazandi...\n");
+							bilgisayar = bilgisayar + 1 ; 																																																																														
+						}										
+				}
+	else if (secim == 3){
+		 if(bilgisayar == 1){
+			printf("Bilgisayar kazandi\n");
+			bilgisayar = bilgisayar + 1; 													
+		}
+		if (bilgisayar == 2){
+			printf("Kazandınız tebrikler...\n")		;	
+			Oyuncu = Oyuncu + 1; 																																				
+		}
+		if (bilgisayar== 3)	{
+			printf("Berabere bitti...\n")			; 
+		}
+	}
+	 else{
+		printf("Hatali giris yaptiniz, lutfen tekrar deneyiniz\n"); 
+		printf("Tekrar denemek için 1'e oyundan cikmak icin 0'a basiniz.")			; 
+		scanf("%d", &hataligiris)		; 
+		if(hataligiris == 1)	{
+			goto degeralma;															
+		}			
+			else{
+			goto cikis;				
+		}					
+															
+		}
+}
+	if(Bilgisayar> Oyuncu){
+		printf("Bilgisayar kazandi...\n");
+	}
+	else if(Oyuncu > Bilgisayar){
+		printf("Tebrikler oyunu kazandiniz...\n");
+	}
+	else if(Oyuncu== Bilgisayar){
+		printf("Kazanan yok, oyun berabere bitti.\n");
+	}
+	cikis:
+	return 0;
+}
